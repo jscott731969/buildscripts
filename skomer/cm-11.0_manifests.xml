@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <manifest>
+      <project name="wimpknocker/android_device_samsung_skomer" path="device/samsung/skomer" revision="cm-11.0-dualboot" />
+      <project name="wimpknocker/android_kernel_samsung_skomer" path="kernel/samsung/skomer" revision="blackhawk" />
+      <project name="wimpknocker/android_vendor_samsung_skomer" path="vendor/samsung/skomer" revision="cm-11.0" />
+      <project path="bootable/recovery-philz" name="wimpknocker/philz_touch_cwm6" remote="github" revision="cm-11.0-dual-boot-f2fs" />
+      <project-remove name="CyanogenMod/android_packages_apps_CMUpdater" />
+      <project name="omnirom/android_packages_apps_OpenDelta" path="packages/apps/OpenDelta" revision="android-4.4" />
+  </manifest>
