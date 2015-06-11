@@ -8,8 +8,8 @@ CUR_DIR=`dirname $0`
 DATE=$(date +%D)
 MACHINE_TYPE=`uname -m`
 branch="$REPO_BRANCH"
-version ="$RECOVERY_VERSION"
 RELEASE_TYPE="$RELEASE_TYPE"
+modver="$modver"
 
 if [ -z "$DEVICE" ]
 then
@@ -290,7 +290,7 @@ create_blackhawk_kernel_zip()
         echo -e "${txtgrn}Bootimage found...${txtrst}"
         if [ -e ${A_TOP}/buildscripts/${CMD}/blackhawk_kernel_updater-script ]; then
 
-            echo -e "${txtylw}Package BLACKHAWKUPDATE:${txtrst} out/target/product/${CMD}/blackhawk-next-kernel-${version}-${CMD}-signed.zip"
+            echo -e "${txtylw}Package BLACKHAWKUPDATE:${txtrst} out/target/product/${CMD}/blackhawk-next-kernel-${modver}-${CMD}-signed.zip"
             cd ${ANDROID_PRODUCT_OUT}
 
             rm -rf kernel_zip
@@ -315,20 +315,20 @@ create_blackhawk_kernel_zip()
 
             echo "Zipping package..."
               cd kernel_zip
-              zip -qr ../blackhawk-next-kernel-${version}-${CMD}.zip ./
+              zip -qr ../blackhawk-next-kernel-${modver}-${CMD}.zip ./
               cd ${ANDROID_PRODUCT_OUT}
 
             echo "Signing package..."
-              java -jar ${ANDROID_HOST_OUT}/framework/signapk.jar ${A_TOP}/build/target/product/security/testkey.x509.pem ${A_TOP}/build/target/product/security/testkey.pk8 blackhawk-next-kernel-${version}-${CMD}.zip blackhawk-next-kernel-${version}-${CMD}-signed.zip
-              rm blackhawk-next-kernel-${version}-${CMD}.zip
+              java -jar ${ANDROID_HOST_OUT}/framework/signapk.jar ${A_TOP}/build/target/product/security/testkey.x509.pem ${A_TOP}/build/target/product/security/testkey.pk8 blackhawk-next-kernel-${modver}-${CMD}.zip blackhawk-next-kernel-${modver}-${CMD}-signed.zip
+              rm blackhawk-next-kernel-${modver}-${CMD}.zip
 
-            echo -e "${txtgrn}Package complete:${txtrst} out/target/product/${CMD}/blackhawk-next-kernel-${version}-${CMD}-signed.zip"
-              md5sum blackhawk-next-kernel-${version}-${CMD}-signed.zip > blackhawk-next-kernel-${version}-${CMD}-signed.zip.md5sum
-              cp blackhawk-next-kernel-${version}-${CMD}-signed.zip $OTA_WIMPNETHER_NET_DEVICE_BLACKHAWK
-              cp blackhawk-next-kernel-${version}-${CMD}-signed.zip.md5sum $OTA_WIMPNETHER_NET_DEVICE_BLACKHAWK
+            echo -e "${txtgrn}Package complete:${txtrst} out/target/product/${CMD}/blackhawk-next-kernel-${modver}-${CMD}-signed.zip"
+              md5sum blackhawk-next-kernel-${modver}-${CMD}-signed.zip > blackhawk-next-kernel-${modver}-${CMD}-signed.zip.md5sum
+              cp blackhawk-next-kernel-${modver}-${CMD}-signed.zip $OTA_WIMPNETHER_NET_DEVICE_BLACKHAWK
+              cp blackhawk-next-kernel-${modver}-${CMD}-signed.zip.md5sum $OTA_WIMPNETHER_NET_DEVICE_BLACKHAWK
               cd ${A_TOP}
         else
-            echo -e "${txtred}No instructions to create out/target/product/${CMD}/blackhawk-next-kernel-${version}-${CMD}-signed.zip... skipping."
+            echo -e "${txtred}No instructions to create out/target/product/${CMD}/blackhawk-next-kernel-${modver}-${CMD}-signed.zip... skipping."
             echo -e "\r\n ${txtrst}"
         fi
     else
